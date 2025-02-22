@@ -23,11 +23,24 @@ data = pd.read_csv("data/messages.csv")
 random_row = data.sample(n=1).iloc[0]
 random_email = random_row['body']
 random_subject = random_row['subject']
+random_sender = random_row['sender']
+random_phish = random_row['label'] # 1 for phishing, 0 for not phishing
 
 # display text
 st.header(f"**{random_subject}**") # subject line
 st.write(random_email) # body of email
 
 # buttons
-st.button(label="Phish!", icon="🐟")
-st.button(label="Not Phish!", icon="🐈")
+phish = st.button(label="Phish!", icon="🐟")
+not_phish = st.button(label="Not Phish!", icon="🐈")
+
+if (phish):
+    if (random_phish == 1):
+        st.write("Correct! You caught the phish!")
+    else:
+        st.write("Incorrect! That was not a phish.")
+elif (not_phish): 
+    if (random_phish == 0):
+        st.write("Correct! That was not a phish.")
+    else:
+        st.write("Incorrect! You let the phish swim by.")
