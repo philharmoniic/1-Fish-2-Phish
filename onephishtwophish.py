@@ -15,7 +15,7 @@ import os
 # This is part of a website about differentiating phishing from non-phishing.''') #enter your prompt here!
 # print(response.text) #dont forget to print your response!
 
-st.title("One Phish, Two Phish")
+st.title("One Phish, Two Phish: The Game About Fishy Emails")
 # st.text(response.text)
 
 # data reading
@@ -26,8 +26,11 @@ random_subject = random_row['subject']
 random_sender = random_row['sender']
 random_phish = random_row['label'] # 1 for phishing, 0 for not phishing
 
+# display logo
+
 # display text
-st.header(f"**{random_subject}**") # subject line
+st.header(f"**{random_subject}**", divider=True) # subject line
+st.caption(f"From: {random_sender}") # sender
 st.write(random_email) # body of email
 
 # buttons
