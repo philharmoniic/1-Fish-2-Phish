@@ -17,3 +17,8 @@ print(response.text) #dont forget to print your response!
 
 st.title("One Phish Two Phish")
 st.text(response.text)
+
+# data reading
+data = pd.read_csv("data/messages.csv")
+email = data.sample(1)
+st.write(email)
