@@ -6,14 +6,10 @@ import requests as req
 import google.generativeai as genai
 import os
 
-# os.environ["GOOGLE_API_KEY"] = st.secrets["key"]
-# client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+os.environ["GOOGLE_API_KEY"] = "AIzaSyC4xfkOAnvagK_2j4L6YVZDJPouGS8JXlI"
+client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-# model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
-# response = model.generate_content('''You are a phishing scam email generator. Return an example phishing email from the Georgia Institute of Technology. 
-# Don't make it obviously a phishing email, and don't put a 'note: this is a fake phishing email' at the end. 
-# This is part of a website about differentiating phishing from non-phishing.''') #enter your prompt here!
-# print(response.text) #dont forget to print your response!
+model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
 
 st.markdown(
     """
@@ -53,17 +49,32 @@ with st.container():
     phish = st.button(label="Phish!", icon="🐟", on_click=disable, disabled=st.session_state['disabled'])
     not_phish = st.button(label="Not Phish!", icon="🐈", on_click=disable, disabled=st.session_state['disabled'])
 
+prompt = f'''
+You are an AI model being used in a phishing detection web-game. Please explain why the following 
+set of data is phishing (if it has a label of 1) or not phishing (if it has a label 0): {st.session_state['row']}.
+Try to write it like a normal person explaining what about it indicates that it is or is not phishing.
+Also, don't include the label, as users cannot see that. Don't indicate that this is using a dataset. Don't include
+the provided URL counter; only count them yourself if you want to point out the number of URLs.
+Try to sound as natural as possible. Please start sentences with something other than "okay." Try to be kind
+and caring to users, explaining it in a way that anyone could understand.
+'''
+
+response = model.generate_content(prompt)
+
 if (phish):
     if (random_phish == 1):
-        st.write("Correct! You caught the phish!")
+        st.subheader("Correct! You caught the phish!")
     else:
-        st.write("Incorrect! That was not a phish.")
-
+        st.subheader("Incorrect! That was not a phish.")
+    st.write(response.text.replace('`', ''))
 elif (not_phish): 
     if (random_phish == 0):
-        st.write("Correct! That was not a phish.")
+        st.subheader("Correct! That was not a phish.")
     else:
-        st.write("Incorrect! You let the phish swim by.")
+        st.subheader("Incorrect! You let the phish swim by.")
+    st.write(response.text.replace('`', ''))
+
+print(response.text)
 
 # Refresh button logic
 def refresh():
