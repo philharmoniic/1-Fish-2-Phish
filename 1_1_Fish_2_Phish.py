@@ -23,7 +23,7 @@ def disable():
     st.session_state['disabled'] = True
 
 if ('rand_int' not in st.session_state):
-    st.session_state['rand_int'] = random.randint(0,2)
+    st.session_state['rand_int'] = random.randint(0,1)
 
 if ('score' not in st.session_state):
     st.session_state['score'] = 0
