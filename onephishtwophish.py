@@ -6,7 +6,7 @@ import requests as req
 import google.generativeai as genai
 import os
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyC4xfkOAnvagK_2j4L6YVZDJPouGS8JXlI"
+os.environ["GOOGLE_API_KEY"] = st.secret['key']
 client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
@@ -53,7 +53,8 @@ try:
         Your job is to reformat the following email. {random_email}.
         When reformatting, fix any grammar mistakes, paragraph formatting, and errors without deviating
         too much from the structure of the original email. Do nothing other than reformat the email.
-        
+
+        Change the dates to be after 2020.
         '''
         if ('body' not in st.session_state or st.session_state['body'] == st.session_state['row']['body']):
             reformatted_email = model.generate_content(reformat_prompt)
