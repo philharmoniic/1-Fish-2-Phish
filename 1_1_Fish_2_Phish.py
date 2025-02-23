@@ -25,6 +25,9 @@ def disable():
 if ('rand_int' not in st.session_state):
     st.session_state['rand_int'] = random.randint(0,2)
 
+if ('score' not in st.session_state):
+    st.session_state['score'] = 0
+
 try:
     with st.container():
         # data reading
@@ -86,14 +89,18 @@ try:
     if (phish):
         if (random_phish == 1):
             st.subheader("Correct! You caught the phish!")
+            st.session_state['score'] += 1
         else:
             st.subheader("Incorrect! That was not a phish.")
+            st.session_state['score'] = 0
         st.write(response.text.replace('`', '*'))
     elif (not_phish): 
         if (random_phish == 0):
             st.subheader("Correct! That was not a phish.")
+            st.session_state['score'] += 1
         else:
             st.subheader("Incorrect! You let the phish swim by.")
+            st.session_state['score'] = 0
         st.write(response.text.replace('`', '*'))
 
     print(response.text)
