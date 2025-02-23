@@ -15,9 +15,15 @@ import os
 # This is part of a website about differentiating phishing from non-phishing.''') #enter your prompt here!
 # print(response.text) #dont forget to print your response!
 
-st.title("One Phish, Two Phish")
-# st.text(response.text)
+st.markdown(
+    """
+    <link rel="stylesheet" type="text/css" href="style.css">
+    """,
+    unsafe_allow_html=True
+)
 
+st.title("One Fish, Two Phish: The Game About Fishy Emails")
+# st.text(response.text)
 
 def disable():
     st.session_state['disabled'] = True
@@ -35,16 +41,17 @@ with st.container():
 
     random_email = st.session_state['row']['body']
     random_subject = st.session_state['row']['subject']
+    random_sender = st.session_state['row']['sender']
     random_phish = st.session_state['row']['label']
 
     # display text
-    st.header(f"**{random_subject}**") # subject line
+    st.header(f"**{random_subject}**", divider=True) # subject line
+    st.caption(f"From: {random_sender}") # sender
     st.write(random_email) # body of email
 
     # buttons
     phish = st.button(label="Phish!", icon="🐟", on_click=disable, disabled=st.session_state['disabled'])
     not_phish = st.button(label="Not Phish!", icon="🐈", on_click=disable, disabled=st.session_state['disabled'])
-
 
 if (phish):
     if (random_phish == 1):
