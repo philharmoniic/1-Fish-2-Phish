@@ -54,7 +54,8 @@ try:
         When reformatting, fix any grammar mistakes, paragraph formatting, and errors without deviating
         too much from the structure of the original email. Do nothing other than reformat the email.
 
-        Change the dates to be after 2020.
+        Change the dates to be after 2020. Replace any instance of Enron with a different company name
+        [like Google, Amazon, Microsoft, Sony, Georgia Power, etc.]
         '''
         if ('body' not in st.session_state or st.session_state['body'] == st.session_state['row']['body']):
             reformatted_email = model.generate_content(reformat_prompt)
