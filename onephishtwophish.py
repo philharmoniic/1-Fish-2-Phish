@@ -15,7 +15,14 @@ import os
 # This is part of a website about differentiating phishing from non-phishing.''') #enter your prompt here!
 # print(response.text) #dont forget to print your response!
 
-st.title("One Phish, Two Phish: The Game About Fishy Emails")
+st.markdown(
+    """
+    <link rel="stylesheet" type="text/css" href="style.css">
+    """,
+    unsafe_allow_html=True
+)
+
+st.title("One Fish, Two Phish: The Game About Fishy Emails")
 # st.text(response.text)
 
 # data reading
