@@ -11,6 +11,11 @@ client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
 
+# logo on sidebar
+
+with st.sidebar:
+  st.image("static/images/logo.png", width=None)
+
 st.title("1 Fish, 2 Phish: The Game About Fishy Emails")
 # st.text(response.text)
 
