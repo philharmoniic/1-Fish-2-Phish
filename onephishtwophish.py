@@ -18,6 +18,7 @@ import os
 st.title("One Phish, Two Phish")
 # st.text(response.text)
 
+
 def disable():
     st.session_state['disabled'] = True
 
@@ -43,6 +44,7 @@ with st.container():
     # buttons
     phish = st.button(label="Phish!", icon="🐟", on_click=disable, disabled=st.session_state['disabled'])
     not_phish = st.button(label="Not Phish!", icon="🐈", on_click=disable, disabled=st.session_state['disabled'])
+
 
 if (phish):
     if (random_phish == 1):
