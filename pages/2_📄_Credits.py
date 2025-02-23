@@ -13,7 +13,7 @@ st.write(f"You can find my GitHub at [NathanNWCW]({M.my_github_url.strip()})!")
 
 st.subheader("Phillip Abraham")
 st.image(P.profile_picture, width=200)
-st.write(f"About Me: {P.about_me}\n")
-st.write(f"My Contributions: {P.contributions.strip()}\n")
-st.write(f"You can find my GitHub at [NathanNWCW]({P.my_github_url.strip()})!")
+st.write(f"**About Me:** {P.about_me}\n")
+st.write(f"**My Contributions:** {P.contributions.strip()}\n")
+st.write(f"You can find my GitHub at [philharmoniic]({P.my_github_url.strip()})!")
 
