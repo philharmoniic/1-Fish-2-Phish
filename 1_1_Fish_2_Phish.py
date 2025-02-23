@@ -17,6 +17,8 @@ with st.sidebar:
   st.image("static/logo.png", width=None)
 
 st.title("1 Fish, 2 Phish 🎣 \n A Game About Fishy Emails")
+
+st.write(f"Correct Answer Streak: {score}")
 # st.text(response.text)
 
 def disable():
