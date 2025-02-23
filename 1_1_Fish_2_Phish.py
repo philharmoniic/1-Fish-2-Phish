@@ -17,8 +17,6 @@ with st.sidebar:
   st.image("static/logo.png", width=None)
 
 st.title("1 Fish, 2 Phish 🎣 \n A Game About Fishy Emails")
-
-st.write(f"Correct Answer Streak: {score}")
 # st.text(response.text)
 
 def disable():
@@ -29,6 +27,9 @@ if ('rand_int' not in st.session_state):
 
 if ('score' not in st.session_state):
     st.session_state['score'] = 0
+
+
+st.write(f"Correct Answer Streak: {st.session_state['score']}")
 
 try:
     with st.container():
