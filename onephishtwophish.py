@@ -18,16 +18,47 @@ import os
 st.title("One Phish, Two Phish")
 # st.text(response.text)
 
-# data reading
-data = pd.read_csv("data/messages.csv")
-random_row = data.sample(n=1).iloc[0]
-random_email = random_row['body']
-random_subject = random_row['subject']
+def disable():
+    st.session_state['disabled'] = True
 
-# display text
-st.header(f"**{random_subject}**") # subject line
-st.write(random_email) # body of email
+with st.container():
+    # data reading
+    data = pd.read_csv("data/messages.csv")
+    random_row = data.sample(n=1).iloc[0]
+    
+    if ('disabled' not in st.session_state):
+        st.session_state['disabled'] = False
+    
+    if ('row' not in st.session_state):
+        st.session_state['row'] = random_row
 
-# buttons
-st.button(label="Phish!", icon="🐟")
-st.button(label="Not Phish!", icon="🐈")
+    random_email = st.session_state['row']['body']
+    random_subject = st.session_state['row']['subject']
+    random_phish = st.session_state['row']['label']
+
+    # display text
+    st.header(f"**{random_subject}**") # subject line
+    st.write(random_email) # body of email
+
+    # buttons
+    phish = st.button(label="Phish!", icon="🐟", on_click=disable, disabled=st.session_state['disabled'])
+    not_phish = st.button(label="Not Phish!", icon="🐈", on_click=disable, disabled=st.session_state['disabled'])
+
+if (phish):
+    if (random_phish == 1):
+        st.write("Correct! You caught the phish!")
+    else:
+        st.write("Incorrect! That was not a phish.")
+
+elif (not_phish): 
+    if (random_phish == 0):
+        st.write("Correct! That was not a phish.")
+    else:
+        st.write("Incorrect! You let the phish swim by.")
+
+# Refresh button logic
+def refresh():
+    st.session_state['row'] = data.sample(n=1).iloc[0]
+    st.session_state['disabled'] = False
+
+refresh_button = st.button(label="Re-Phish", on_click=refresh)
