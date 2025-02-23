@@ -11,13 +11,6 @@ client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
 
-st.markdown(
-    """
-    <link rel="stylesheet" type="text/css" href="static/style.css">
-    """,
-    unsafe_allow_html=True
-)
-
 st.title("1 Fish, 2 Phish: The Game About Fishy Emails")
 # st.text(response.text)
 
