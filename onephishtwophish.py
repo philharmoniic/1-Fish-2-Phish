@@ -50,7 +50,7 @@ try:
         random_phish = st.session_state['row']['label']
 
         reformat_prompt = f'''
-        Your job is to reformat the following email. {random_email}.
+        Your job is to reformat the following email, "{random_email}".
         When reformatting, fix any grammar mistakes, paragraph formatting, and errors without deviating
         too much from the structure of the original email. Do nothing other than reformat the email.
 
