@@ -2,6 +2,9 @@ import streamlit as st
 import Nathan_info as M
 import Phil_info as P
 
+with st.sidebar:
+  st.image("static/logo.png", width=None)
+  
 st.title("Credits")
 st.header("Who worked on ***1 Fish, 2 Phish***?", divider=True)
 

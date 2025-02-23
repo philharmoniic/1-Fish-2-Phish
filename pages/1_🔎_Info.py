@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+with st.sidebar:
+  st.image("static/logo.png", width=None)
+  
 st.title("1 Fish, 2 Phish: The Game About Fishy Emails")
 
 st.header("About the Project", divider=True)
