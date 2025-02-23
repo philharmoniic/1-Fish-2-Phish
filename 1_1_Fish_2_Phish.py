@@ -31,7 +31,7 @@ if ('score' not in st.session_state):
 if ('hi_score' not in st.session_state):
     st.session_state['hi_score'] = st.session_state['score'] 
 
-st.write(f"High Score: {st.session_state['hi_score']}"
+st.write(f"High Score: {st.session_state['hi_score']}")
 st.write(f"Correct Answer Streak: {st.session_state['score']}")
 
 try:
