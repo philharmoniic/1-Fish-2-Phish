@@ -6,7 +6,7 @@ import requests as req
 import google.generativeai as genai
 import os
 
-os.environ["GOOGLE_API_KEY"] = st.secrets['key']
+os.environ["GOOGLE_API_KEY"] = "AIzaSyC4xfkOAnvagK_2j4L6YVZDJPouGS8JXlI"
 client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
@@ -24,10 +24,17 @@ st.title("One Fish, Two Phish: The Game About Fishy Emails")
 def disable():
     st.session_state['disabled'] = True
 
+if ('rand_int' not in st.session_state):
+    st.session_state['rand_int'] = random.randint(0,2)
+
 try:
     with st.container():
         # data reading
-        data = pd.read_csv("data/messages.csv")
+        data = ""
+        if (st.session_state['rand_int'] == 1):
+            data = pd.read_csv("data/messages.csv")
+        else:
+            data = pd.read_csv("data/non-phishing.csv")
         random_row = data.sample(n=1).iloc[0]
         
         if ('disabled' not in st.session_state):
@@ -39,7 +46,7 @@ try:
 
         random_email = st.session_state['row']['body'].replace('`','*')
         random_subject = st.session_state['row']['subject']
-        random_sender = st.session_state['row']['sender']
+        # random_sender = st.session_state['row']['sender']
         random_phish = st.session_state['row']['label']
 
         reformat_prompt = f'''
@@ -54,7 +61,7 @@ try:
 
         # display text
         st.header(f"**{random_subject}**", divider=True) # subject line
-        st.caption(f"From: {random_sender}") # sender
+        # st.caption(f"From: {random_sender}") # sender
         st.write(st.session_state['body']) # body of email
 
         # buttons
@@ -103,5 +110,5 @@ def refresh():
     st.session_state['row'] = data.sample(n=1).iloc[0]
     st.session_state['body'] = st.session_state['row']['body']
     st.session_state['disabled'] = False
-
+    st.session_state['rand_int'] = random.randint(0,2)
 refresh_button = st.button(icon="🔄", label="Re-Phish", on_click=refresh)
