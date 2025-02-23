@@ -13,7 +13,7 @@ model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of goo
 
 st.markdown(
     """
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
     """,
     unsafe_allow_html=True
 )
