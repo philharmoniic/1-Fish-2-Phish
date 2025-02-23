@@ -28,7 +28,10 @@ if ('rand_int' not in st.session_state):
 if ('score' not in st.session_state):
     st.session_state['score'] = 0
 
+if ('hi_score' not in st.session_state):
+    st.session_state['hi_score'] = st.session_state['score'] 
 
+st.write(f"High Score: {st.session_state['hi_score']}"
 st.write(f"Correct Answer Streak: {st.session_state['score']}")
 
 try:
@@ -121,4 +124,6 @@ def refresh():
     st.session_state['body'] = st.session_state['row']['body']
     st.session_state['disabled'] = False
     st.session_state['rand_int'] = random.randint(0,2)
+    if (st.session_state['score'] > st.session_state['hi_score']):
+        st.session_state['hi_score'] = st.session_state['score']
 refresh_button = st.button(icon="🔄", label="Re-Phish", on_click=refresh)
