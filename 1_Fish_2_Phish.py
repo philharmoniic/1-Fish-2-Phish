@@ -18,7 +18,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("One Fish, Two Phish: The Game About Fishy Emails")
+st.title("1 Fish, 2 Phish: The Game About Fishy Emails")
 # st.text(response.text)
 
 def disable():
