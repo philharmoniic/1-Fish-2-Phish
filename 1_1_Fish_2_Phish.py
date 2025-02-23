@@ -16,7 +16,7 @@ model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of goo
 with st.sidebar:
   st.image("static/logo.png", width=None)
 
-st.title("🎣 1 Fish, 2 Phish: The Game About Fishy Emails")
+st.title("1 Fish, 2 Phish 🎣 A Game About Fishy Emails")
 # st.text(response.text)
 
 def disable():
