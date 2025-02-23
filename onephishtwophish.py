@@ -35,7 +35,7 @@ with st.container():
     if ('row' not in st.session_state):
         st.session_state['row'] = random_row
 
-    random_email = st.session_state['row']['body']
+    random_email = st.session_state['row']['body'].replace('`','*')
     random_subject = st.session_state['row']['subject']
     random_sender = st.session_state['row']['sender']
     random_phish = st.session_state['row']['label']
@@ -66,13 +66,13 @@ if (phish):
         st.subheader("Correct! You caught the phish!")
     else:
         st.subheader("Incorrect! That was not a phish.")
-    st.write(response.text.replace('`', ''))
+    st.write(response.text.replace('`', '*'))
 elif (not_phish): 
     if (random_phish == 0):
         st.subheader("Correct! That was not a phish.")
     else:
         st.subheader("Incorrect! You let the phish swim by.")
-    st.write(response.text.replace('`', ''))
+    st.write(response.text.replace('`', '*'))
 
 print(response.text)
 
