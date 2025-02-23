@@ -14,7 +14,7 @@ model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of goo
 # logo on sidebar
 
 with st.sidebar:
-  st.image("static/images/logo.png", width=None)
+  st.image("static/logo.png", width=None)
 
 st.title("1 Fish, 2 Phish: The Game About Fishy Emails")
 # st.text(response.text)
