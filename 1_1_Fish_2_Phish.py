@@ -81,7 +81,10 @@ try:
 
     prompt = f'''
     You are an AI model being used in a phishing detection web-game. Please explain why the following 
-    set of data is phishing (if it has a label of 1) or not phishing (if it has a label 0): {st.session_state['row']}.
+    set of data is phishing (if it has a label of 1) or not phishing (if it has a label 0): Subject: {st.session_state['row']['subject']}, Body: {st.session_state['body']}.
+
+    The phishing/not phishing value is: {random_phish}
+    
     Try to write it like a normal person explaining what about it indicates that it is or is not phishing.
     Also, don't include the label, as users cannot see that. Don't indicate that this is using a dataset. Don't include
     the provided URL counter; only count them yourself if you want to point out the number of URLs.
