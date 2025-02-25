@@ -62,7 +62,9 @@ try:
         too much from the structure of the original email. Do nothing other than reformat the email.
 
         Change the dates to be after 2020. Replace any instance of Enron with a different company name
-        [like Google, Amazon, Microsoft, Sony, Georgia Power, etc.]
+        [like Google, Amazon, Microsoft, Sony, Georgia Power, etc.]. Replace any and all links to outside
+        sources with [https://1fish-2phish.streamlit.app] so that, in case someone clicks it, it links them
+        back to our site.
         '''
         if ('body' not in st.session_state or st.session_state['body'] == st.session_state['row']['body']):
             reformatted_email = model.generate_content(reformat_prompt)
