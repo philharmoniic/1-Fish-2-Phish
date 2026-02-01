@@ -118,7 +118,8 @@ try:
 
     # Refresh button logic
 
-except:
+except Exception as e:
+    print(e)
     st.subheader('''
     Too many requests! The lake's gone dry!
     Please wait ~1 minute before trying again!
