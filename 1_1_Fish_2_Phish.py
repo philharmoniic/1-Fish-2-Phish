@@ -121,7 +121,7 @@ try:
 except Exception as e:
     st.header(e)
 
-    st.subheader(genai.ListModels)
+    st.subheader(genai.ListModels())
     
     st.subheader('''
     Too many requests! The lake's gone dry!
