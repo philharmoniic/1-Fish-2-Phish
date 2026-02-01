@@ -9,7 +9,7 @@ import os
 os.environ["GOOGLE_API_KEY"] = st.secrets['key']
 client = genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-model = genai.GenerativeModel("gemini-1.5-flash") #this is the free model of google gemini
+model = genai.GenerativeModel("gemini-2.0-flash") #this is the free model of google gemini
 
 # logo on sidebar
 
@@ -120,8 +120,6 @@ try:
 
 except Exception as e:
     st.header(e)
-
-    st.subheader(genai.ListModels())
     
     st.subheader('''
     Too many requests! The lake's gone dry!
