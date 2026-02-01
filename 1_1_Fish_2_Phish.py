@@ -119,7 +119,7 @@ try:
     # Refresh button logic
 
 except Exception as e:
-    print(e)
+    st.header(e)
     st.subheader('''
     Too many requests! The lake's gone dry!
     Please wait ~1 minute before trying again!
